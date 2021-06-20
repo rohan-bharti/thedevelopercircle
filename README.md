@@ -19,4 +19,5 @@
 1. It is expected to submit the solutions prior to the weekly meeting
 2. Follow the template in each of your folders for submitting your code
 3. You can use any language you're comfortable with
+4. Use CamelCase naming convention for file names as per the problem
 ```
