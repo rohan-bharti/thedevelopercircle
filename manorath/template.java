@@ -1,5 +1,3 @@
-package manorath;
-
 import java.util.*;
 
 /**

@@ -4,7 +4,7 @@
 
 ### Given below is the plan we are going to follow for now:
 ```
-1. Pick up 5 Leetcode problems prior to a week (2-Easy and 3-Hard)
+1. Pick up 5 Leetcode problems prior to a week (2-Easy and 3-Medium)
 2. Everyone will solve the problems prior to the Sunday group meeting
 3. The final solutions for the problems are supposed to be commited in your respective folders before the weekly meeting
 4. In the meeting, each person will pick a problem (or two) to discuss their approach for the problem
