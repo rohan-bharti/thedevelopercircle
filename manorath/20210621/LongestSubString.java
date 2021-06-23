@@ -9,6 +9,8 @@ import java.util.Set;
  *  iterate over the the substring(increasing right side of the window),
  *  if a duplicate char exists, slide the left side of the window until window has unique chars.
  *  update longest substring with each match.
+ * 
+ *  O(N) time | O(N) space
  */
 public class LongestSubString {
     public static void main(String[] args) {
