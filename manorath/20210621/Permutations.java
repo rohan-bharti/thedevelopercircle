@@ -11,6 +11,8 @@ import java.util.List;
  * can also add all non leaf nodes but but would def need a set in that case - we have to reach the leafs anyways so it makes more sense to do it this way.
  * 
  * ~ O(N!) time and space complexity.
+ * 
+ * A great post on leetcode discussing approach to backtracking questions in java: https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
  */
 public class Permutations {
 
