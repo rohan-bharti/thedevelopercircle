@@ -9,7 +9,7 @@ import java.util.*;
  * Average - O(N) time | O(M) space (N is the number of characters in the String, M is the number of unique characters)
  * Worst - O(N) time | O(M) space (N is the number of characters in the String, M is the number of unique characters)
  */
-class Solution {
+class SolutionLOLS {
     public int lengthOfLongestSubstring(String s) {
         int maxLength = 0;
         
