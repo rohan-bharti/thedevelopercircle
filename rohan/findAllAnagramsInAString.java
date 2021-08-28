@@ -1,9 +1,10 @@
+import java.util.*;
 /**
  * Since we have to find a subset and this is a String problem, seems like a sliding window problem.
  * 
  * Average - O(N) time | O(1) space
  */
-class Solution {
+class SolutionFAAS {
     public List<Integer> findAnagrams(String s, String p) {
         List<Integer> result = new ArrayList<>();
         
