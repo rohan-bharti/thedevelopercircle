@@ -1,5 +1,3 @@
-import java.util.*;
-
 /**
  * Climbing Stairs Recursion solution memoized; bottom up
  * dynamic programming
