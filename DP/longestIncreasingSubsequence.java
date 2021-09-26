@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Longest Increasing Subsequence. We iterate over the elements of the given array, check if there
  * exists a previous element which is smaller than the current element and keep a track of the length
