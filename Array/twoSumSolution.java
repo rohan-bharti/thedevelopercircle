@@ -1,7 +1,8 @@
 import java.util.*;
 
 /**
- * Two Sum. We store the values in a 
+ * Two Sum. We store the values in a hashmap and check if the difference of the target and the current values exists in the array.
+ * This would give us the two numbers that add to the given target.
  * 
  * Average - O(N) time | O(N) space
  */
