@@ -1,9 +1,9 @@
 /**
- * Find Minimum in Rotated Sorted Array. Since the array is rotated but sorted, we can use a modified version of Binary Sort.
+ * Find Minimum in Rotated Sorted Array. Since the array is rotated but sorted, we can use a modified version of Binary Search.
  * We find the middle, check if the preceding element is greater i.e we have reached the "original" starting point of the array.
  * Else, we check if we are still in the rotated subarray; ie mid > start and mid > end i.e we are yet to reach the original start
- * of the array, hence we move the start to mid+1. Else if we are in a position where the mid is smaller than the start and smaller
- * than the end element, ie we are in the original sorted array but at a pos ahead of the start of the original array. This made sense
+ * of the array, hence we move the start to mid+1. If we are in a position where the mid is smaller than the start and end element,
+ * ie we are in the original sorted array but at a pos ahead of the start of the original array. This made sense
  * when I was writing the doc, if it doesn't idgaf. Enjoy.
  * P.S In Sorted Array questions, think of Binary Search.
  * 
