@@ -8,12 +8,12 @@ class SolutionCSR {
     public int climbStairs(int n) {
         return recurse(n);
     }
-    
+
     private int recurse(int n) {
         if(n==0 || n==1) {
             return 1;
         }
-        
+
         return recurse(n-1) + recurse(n-2);
     }
 }

@@ -8,11 +8,11 @@ class Solution {
     public int longestCommonSubsequence(String s1, String s2) {
         int m = s1.length();
         int n = s2.length();
-        
+
         // The dp represents both the strings places on a 2-D array char by char
         // The row/col index '0' is for an empty string ""
         int[][] dp = new int[m + 1][n + 1];
-        
+
         for(int i=0; i<=m; i++) {
             for(int j=0; j<=n; j++) {
                 if(i==0 || j==0) {
@@ -29,8 +29,8 @@ class Solution {
                 }
             }
         }
-        
-        return dp[m][n]; 
+
+        return dp[m][n];
     }
 }
 
@@ -44,24 +44,24 @@ class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
         int m = text1.length();
         int n = text2.length();
-        
+
         Integer[][] dp = new Integer[m+1][n+1];
-        
+
         return lcs(m, n, dp, text1, text2);
     }
-    
+
     private int lcs(int i, int j, Integer[][] cache, String s1, String s2) {
         if( i==0 || j==0)
             return 0;
-        
+
         if( cache[i][j] != null)
             return cache[i][j];
-        
+
         if(s1.charAt(i-1) == s2.charAt(j-1))
             cache[i][j] = 1 + lcs(i-1, j-1, cache, s1, s2);
         else
             cache[i][j] = Math.max(lcs(i-1, j, cache, s1, s2), lcs(i, j-1, cache, s1, s2));
-        
+
         return cache[i][j];
     }
 }

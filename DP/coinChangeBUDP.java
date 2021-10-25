@@ -1,7 +1,7 @@
 /**
  * Coin Change Solution. Each index is a representation of an amount value in the dp array. We check using the coins array,
  * if by using one or multiple, can we make their sum equal to the i value.
- * 
+ *
  * Average - O(N*M) time | O(M) space where N is the amount value, M is the number of coins
  */
 class SolutionCCBUDP {

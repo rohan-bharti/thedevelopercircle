@@ -1,21 +1,21 @@
 /**
  * Maximum Subarray. We hold a variable to store the sum of contiguous members.
  * If the sum becomes < 0, we set it to 0. The maxSum holds the maximum sum of the contiguous array.
- * 
+ *
  * Average - O(N) time | O(1) space
  */
 class Solution {
     public int maxSubArray(int[] nums) {
         int maxSum = Integer.MIN_VALUE;
         int cumSum = 0;
-        
+
         for(int i=0; i<nums.length; i++) {
             cumSum += nums[i];
             maxSum = Math.max(maxSum, cumSum);
-            
+
             cumSum = cumSum < 0 ? 0 : cumSum;
         }
-        
+
         return maxSum;
     }
 
@@ -30,19 +30,19 @@ class Solution {
     public int maxSubArrayDAC(int[] nums) {
         return dfs(nums, 0, nums.length-1);
     }
-    
+
     private int dfs(int[] nums, int i, int j) {
         if(i==j)
             return nums[i];
-        
+
         int mid = (i+j)/2;
         int left = dfs(nums, i, mid);
         int right = dfs(nums, mid+1, j);
-        
+
         int merge = merge(nums, mid);
         return Math.max(left, Math.max(right, merge));
     }
-    
+
     private int merge(int[] nums, int m) {
         int leftMax = Integer.MIN_VALUE;
         int left = 0;
@@ -50,14 +50,14 @@ class Solution {
             left += nums[i];
             leftMax = Math.max(leftMax, left);
         }
-        
+
         int rightMax = Integer.MIN_VALUE;
         int right = 0;
         for(int i=m+1; i<nums.length; i++) {
             right += nums[i];
             rightMax = Math.max(rightMax, right);
         }
-        
+
         return Math.max(leftMax + rightMax, Math.max(leftMax, rightMax));
     }
 }

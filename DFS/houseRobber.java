@@ -2,7 +2,7 @@
  * We start from the 0th house. When at a certain house, we either choose the
  * next house or the gold from the current and next to next house since we
  * cannot rob two adjacent houses.
- * 
+ *
  * Average - O(N) time | O(N) Space
  */
 class houseRobber {

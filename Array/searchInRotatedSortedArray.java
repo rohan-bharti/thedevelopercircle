@@ -1,20 +1,20 @@
 /**
  * Search in Rotated Sorted Array. We know the array is sorted in two parts after rotation. By doing binary search we are trying to analyze
  * which part might contain the target.
- * 
+ *
  * Average - O(logN) time | O(1) space
  */
 class  searchInRotatedSortedArray {
     public int search(int[] nums, int target) {
         if(nums == null || nums.length == 0)
             return -1;
-        
+
         int start = 0;
         int end = nums.length - 1;
-        
+
         while(start <= end) {
             int mid = (start + end)/2;
-            
+
             if(nums[mid] == target)
                 return mid;
             else if(nums[mid] >= nums[start]) { //check if mid is the rotated subarray
@@ -29,7 +29,7 @@ class  searchInRotatedSortedArray {
                     end = mid-1;
             }
         }
-        
+
         return -1;
     }
 }
