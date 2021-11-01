@@ -9,24 +9,24 @@ class Solution {
     public int longestConsecutive(int[] nums) {
         Set<Integer> set = new HashSet<>();
         int longestConsecutiveLength = 0;
-        
+
         for(int num: nums) {
             set.add(num);
         }
-        
+
         for(int num: set) {
             if(!set.contains(num-1)) {
                 int currentLength = 0;
                 int currNum = num;
-                
+
                 while(set.contains(currNum++)) {
                     currentLength++;
                 }
-                
+
                 longestConsecutiveLength = Math.max(longestConsecutiveLength, currentLength);
             }
         }
-        
+
         return longestConsecutiveLength;
     }
 }
