@@ -1,8 +1,13 @@
 import java.util.*;
 
 /**
- * Since we have to find a subset and this is a String problem, seems like a
- * sliding window problem.
+ * Minimum Window Substring. We take two pointers - start and end. The pattern string(t) is put into a hashmap with chars and their
+ * frequencies. We create a window map, and start moving the end pointer in the search string. If the current end char is a required char
+ * and its frequency matches the frequency in pattern string, we inc the number of chars matched.
+ *
+ * Once the number of chars matched is equal to the pattern string hashmap size, we check if we can move the start pointer and reduce the length
+ * of the substring that contains all the characters in t. While inc the start, we check if the char we are removing is a required character
+ * or not, based on which we decrement the charsMatched counter. By doing this, we keep a track of the minimum length of the substring.
  *
  * Average - O(M + N) time | O(M + N) space M-length of s; N-length of t
  */
