@@ -43,8 +43,8 @@ class Solution {
 }
 
 /**
- * Longest Palindromic Substring. We iterate over the indices of the string, and expand from them (check for both even and odd lengths),
- * check if the substring is a palindrome or not.
+ * Longest Palindromic Substring. We iterate over the indices of the string, and expand from there (check for both even and odd lengths),
+ * check if the substring is a palindrome or not and accordingly update the result and the total length.
  *
  * Time Complexity: O(N^2) Time | O(1) Space
  */
