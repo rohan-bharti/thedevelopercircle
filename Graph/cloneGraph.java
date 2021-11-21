@@ -56,3 +56,27 @@ class Solution {
         return map.get(start);
     }
 }
+
+/**
+ * Clone a graph - DFS. We use a hashmap to map the original node to the duplicate node. It also helps in adding the neighbors of a duplicate node
+ * by referencing the (original nodes of) the duplicate neighbors in constant time.
+ *
+ * Average - O(N+M) time - N nodes and M edges | O(N) space for hashmap and O(H) space for Stack (H being the height of the graph)
+class Solution {
+    Map<Node, Node> map = new HashMap<>();
+    public Node cloneGraph(Node node) {
+        if(node == null)
+            return null;
+
+        if(map.containsKey(node))
+            return map.get(node);
+
+        Node cloneNode = new Node(node.val);
+        map.put(node, cloneNode);
+
+        for(Node neighbor: node.neighbors) {
+            cloneNode.neighbors.add(cloneGraph(neighbor));
+        }
+        return cloneNode;
+    }
+}

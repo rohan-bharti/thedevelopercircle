@@ -103,3 +103,43 @@ class Solution {
         return count == numCourses;
     }
 }
+
+/**
+ * Improved DFS.
+ */
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        Map<Integer, List<Integer>> adjList = new HashMap<>();
+
+        for(int[] prereq: prerequisites) {
+            adjList.putIfAbsent(prereq[1], new ArrayList<>());
+            adjList.get(prereq[1]).add(prereq[0]);
+        }
+
+        Set<Integer> visited = new HashSet<>();
+        for(int i=0; i<numCourses; i++) {
+            if(!dfs(adjList, i, visited))
+                return false;
+        }
+
+        return true;
+    }
+
+    private boolean dfs(Map<Integer, List<Integer>> map, int currCourse, Set<Integer> canVisit) {
+        if(canVisit.contains(currCourse))
+            return false; // cycle exists
+
+        if(!map.containsKey(currCourse))
+            return true;
+
+        canVisit.add(currCourse);
+        for(Integer next: map.get(currCourse)) {
+            if(!dfs(map, next, canVisit))
+                return false;
+        }
+
+        canVisit.remove(currCourse);
+        map.remove(currCourse); // remove it since it can be completed without cycles, no need to check it again
+        return true;
+    }
+}
