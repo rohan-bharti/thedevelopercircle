@@ -62,6 +62,7 @@ class Solution {
  * by referencing the (original nodes of) the duplicate neighbors in constant time.
  *
  * Average - O(N+M) time - N nodes and M edges | O(N) space for hashmap and O(H) space for Stack (H being the height of the graph)
+ */
 class Solution {
     Map<Node, Node> map = new HashMap<>();
     public Node cloneGraph(Node node) {
