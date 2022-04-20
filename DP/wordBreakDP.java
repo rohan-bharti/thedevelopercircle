@@ -11,7 +11,7 @@ public class wordBreakDP {
     public boolean wordBreak(String s, List<String> wordDict) {
         boolean[] dp = new boolean[s.length() + 1];
 
-        dp[0] = true;
+        dp[0] = true; // null string is present in the wordDict
         for(int i=1; i<=s.length(); i++) {
             for(int j=0; j<i; j++) {
                 String subString = s.substring(j,i);
