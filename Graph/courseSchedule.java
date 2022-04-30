@@ -110,36 +110,73 @@ class Solution {
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> adjList = new HashMap<>();
-
-        for(int[] prereq: prerequisites) {
-            adjList.putIfAbsent(prereq[1], new ArrayList<>());
-            adjList.get(prereq[1]).add(prereq[0]);
+        
+        for(int[] preReq: prerequisites) {
+            adjList.putIfAbsent(preReq[0], new ArrayList<>());
+            adjList.get(preReq[0]).add(preReq[1]);
         }
-
-        Set<Integer> visited = new HashSet<>();
-        for(int i=0; i<numCourses; i++) {
-            if(!dfs(adjList, i, visited))
-                return false;
+        
+        Set<Integer> visited = new HashSet<Integer>();
+        for(int num=0; num < numCourses; num++) {
+            if(!dfs(num, adjList, visited))
+               return false;
         }
-
+        
         return true;
     }
-
-    private boolean dfs(Map<Integer, List<Integer>> map, int currCourse, Set<Integer> canVisit) {
-        if(canVisit.contains(currCourse))
-            return false; // cycle exists
-
-        if(!map.containsKey(currCourse))
+    
+    private boolean dfs(int currCourse, Map<Integer, List<Integer>> adjList, Set<Integer> visited) {
+        if(visited.contains(currCourse))
+            return false;
+        
+        if(!adjList.containsKey(currCourse))
             return true;
-
-        canVisit.add(currCourse);
-        for(Integer next: map.get(currCourse)) {
-            if(!dfs(map, next, canVisit))
+        
+        visited.add(currCourse);
+        for(int preReq: adjList.get(currCourse)) {
+            if(!dfs(preReq, adjList, visited))
                 return false;
         }
-
-        canVisit.remove(currCourse);
-        map.remove(currCourse); // remove it since it can be completed without cycles, no need to check it again
+        
+        visited.remove(currCourse);
+        adjList.remove(currCourse);
         return true;
+    }
+}
+
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        Map<Integer, List<Integer>> adjList = new HashMap<>();
+        Queue<Integer> queue = new LinkedList<>();
+        int[] indegrees = new int[numCourses];
+        
+        for(int[] preReq: prerequisites) {
+            adjList.putIfAbsent(preReq[0], new ArrayList<>());
+            adjList.get(preReq[0]).add(preReq[1]);
+            indegrees[preReq[1]]++;
+        }
+        
+        for(int i=0; i<numCourses; i++) {
+            if(indegrees[i] == 0)
+                queue.offer(i);
+        }
+        
+        int validCourses = 0;
+        while(!queue.isEmpty()) {
+            int currCourse = queue.remove();
+            
+            validCourses++;
+            if(!adjList.containsKey(currCourse))
+                continue;
+            
+            for(int preReq: adjList.get(currCourse)) {
+                indegrees[preReq]--;
+                
+                if(indegrees[preReq] == 0)
+                    queue.offer(preReq);
+            }
+        }
+        
+        return validCourses == numCourses;
     }
 }
