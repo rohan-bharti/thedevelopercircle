@@ -10,26 +10,26 @@ import java.util.*;
  */
 class SolutionLRCR {
     public int characterReplacement(String s, int k) {
-        Map<Character, Integer> charCount = new HashMap<>();
+        Map<Character, Integer> windowCharCount = new HashMap<>();
 
         int maxLength = 0;
         int start = 0;
-        int maxRepeatedCharCount = 0;
+        int maxRepeatedwindowCharCount = 0;
 
         for(int end=0; end<s.length(); end++) {
             char currentChar = s.charAt(end);
-            if(charCount.containsKey(currentChar))
-                charCount.put(currentChar, charCount.get(currentChar) + 1);
+            if(windowCharCount.containsKey(currentChar))
+                windowCharCount.put(currentChar, windowCharCount.get(currentChar) + 1);
             else
-                charCount.put(currentChar, 1);
+                windowCharCount.put(currentChar, 1);
 
-            maxRepeatedCharCount = Math.max(maxRepeatedCharCount, charCount.get(currentChar));
+            maxRepeatedwindowCharCount = Math.max(maxRepeatedwindowCharCount, windowCharCount.get(currentChar));
 
             //sliding window - repeated characters = unique characters in the window
             //unique characters if less than k, can be flipped
             //else we increment the start and move the window
-            if(end-start+1 - maxRepeatedCharCount > k) {
-                charCount.put(s.charAt(start), charCount.get(s.charAt(start)) - 1);
+            if(end-start+1 - maxRepeatedwindowCharCount > k) {
+                windowCharCount.put(s.charAt(start), windowCharCount.get(s.charAt(start)) - 1);
                 start++;
             }
 
