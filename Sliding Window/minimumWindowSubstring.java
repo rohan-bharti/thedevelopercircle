@@ -71,3 +71,55 @@ class minimumWindowSubstring {
         return result;
     }
 }
+
+// Elegant solution
+class Solution {
+    public String minWindow(String s, String t) {
+        Map<Character, Integer> tCharsCount = new HashMap<>();
+        Map<Character, Integer> window = new HashMap<>();
+        
+        int uniqueCharsMatch = 0;        
+        int left=0;
+        int minWindowSize = Integer.MAX_VALUE;
+        
+        String result = "";
+
+        for(char c: t.toCharArray()) {
+            tCharsCount.put(c, tCharsCount.getOrDefault(c, 0) + 1);
+        }
+        
+        for(int right=0; right<s.length(); right++) {
+            Character currChar = s.charAt(right);
+            //adding to the window
+            window.put(currChar, window.getOrDefault(currChar, 0) + 1);
+            
+            if(
+                tCharsCount.containsKey(currChar) &&
+                tCharsCount.get(currChar).equals(window.get(currChar))
+              )
+                uniqueCharsMatch++;
+            
+            //checking when to slide the window
+            while(uniqueCharsMatch == tCharsCount.size() && left <= right) {
+                //computing the result
+                if(right-left+1 < minWindowSize) {
+                    minWindowSize = right-left+1;
+                    result = s.substring(left, right+1);
+                }
+                
+                //incrementing the window
+                char startChar = s.charAt(left);
+                window.put(startChar, window.get(startChar) - 1);
+                
+                if(
+                    tCharsCount.containsKey(startChar) &&
+                    window.get(startChar).intValue() < tCharsCount.get(startChar).intValue()
+                )
+                    uniqueCharsMatch--;
+                left++;
+            }
+        }
+        
+        return result;
+    }
+}
