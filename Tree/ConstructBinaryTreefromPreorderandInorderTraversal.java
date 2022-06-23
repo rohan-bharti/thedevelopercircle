@@ -4,8 +4,8 @@ incrementing as we go through. Once we are at a root, we get the indicies of the
 array. To get the left and right children from the inorder, we create a map for all the elements to their respective indicies. We recursively call
 this operation for all the nodes in the preorder array and for each of those nodes create the links for left and right children.
 
-T - O(S.T)
-S - O(logS*logT) ??
+T - O(N)
+S - O(N)
 */
 
 /**
